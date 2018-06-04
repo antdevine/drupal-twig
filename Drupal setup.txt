@@ -1,0 +1,45 @@
+Drupal theme
+
+Install Drupal site
+Move over theme into /themes
+Change theme yml file to match the name of your current theme
+Backend Drupal Apperance > set your theme as default
+
+To create the blocked area
+Install Entity Referance Revisions: https://www.drupal.org/project/entity_reference_revisions
+Install Paragraphs: https://www.drupal.org/project/paragraphs
+Download the above 2 and go to backend Drupal Extend > Install new module and install and activate those 2 modules
+
+Remove extra blocks on site that Drupal adds on
+In backend Drupal: Structure > block layout
+Delete the blocks that are not needed.  I kept the following:
+
+Header:
+Search, breadcrumbs, Main navigation
+
+Main Content:
+Help, Page title, Primary admin actions, Tabs, Main page Content
+
+Footer
+Footer menu
+
+Create a custom block/paragraph
+In Drupal backend: Structure > Content types > Add content types
+Give it a name and press save
+Delete the standard field that it adds in there for Body
+If your creating a section that will just have one set of content and doesnt need to have multiple rows, then you can add a field in here i.e a text field.
+If you need unlimited amount of rows then you need to create a paragraph item first and then link it up to the content types
+To create a paragraph go to structures > Paragraph types Add paragraph type
+Then choose which you want to add, you can have as many fields as you want here
+Once the paragraph type is created, this needs to be linked up to the Content type.  So go back into the content type you created and choose Paragraph, then in Manage fields click the paragraph that you have just created.  The choose unlimted or limited.
+Once the content type is created you need to create a page content type so that you can create a page and add you newly created blocks into the page.
+Go to Structure > Content types > Add content type...Now when you create this content type Choose paragraph and then at the bottom in the Edit tab you will see the Content types already created...so you need to check the boxes that you want to work with your page.  Once that is done go into field settings and change the "Type of item to referance" to "COntent" and choose Unlimited.  Save this.
+Now you can go into Content menu item and create a new content item.  Once you have created the items/blocks you want you can go into Content and create a new content item but choose the Page item that you created, you can tehn link up the different blocks you have created into that.
+Now when you view that created page you will be able to see it if you are logged into drupal but not if you are logged out.  So you need to change permissions.  Go to People > Permissions find Paragraphs Type Permissions and on the content you have created check the boxes for Anonymous user and authenticated user on the "View content" row.
+You will now be able to see you page on the front end.
+
+
+Your page content is pulling through but still looks bad.  You need to structure you code by adding a folder in themes/themename/templates/sections  the folder will be the same name that you called your content type, then create a node and paragraph file, the node file will be called the same as your content type and the paragraph will be called the same as your paragraph type.  then in the files use the machine names that you gave each one in the drupal backend.  You can then style this out.
+
+
+
